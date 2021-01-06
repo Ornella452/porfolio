@@ -1,0 +1,123 @@
+
+{{!-- le footer avec les 2 icones --}}
+
+<div class="footer">
+    <div class="container">
+        <div class="container" style="max-height: 75px;">
+            <div class="row">
+                <div class="col-12">
+                    <div class="line"></div>
+                    <div class="second2">
+
+                        <a href="https://github.com/Ornella452" target="_blank"> <i
+                                class="fab fa-github fa-2x margin"></i></a>
+                        <a href="https://www.linkedin.com/in/ornella-ourfi-8b93a218a" target="_blank"> <i
+                                class="fab fa-linkedin fa-2x margin"></i></a>
+                        <p class="tewt-light">© Ornella Ourfi.Tous droits réservés</p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{!-- le script pour utiliser les icones --}}
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+<style>
+    /* Footer Styles */
+
+    .footer {
+        background: linear-gradient(hsl(0, 0%, 15%), hsl(0, 0%, 15%)),
+            url("http://andreeabunget.co.uk/Img/footer.jpg");
+        background-size: cover;
+        width: 100%;
+        margin: 20px 0 0;
+        padding: 20px;
+        position: fixed;
+        bottom: 0;
+    }
+
+    .second2 {
+        margin-top: 40px;
+        margin-bottom: 50px;
+
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+    }
+
+    .second h4 {
+        letter-spacing: 3px;
+        position: relative;
+        margin-bottom: 20px;
+        font-size: 1.6em;
+        color: #fff;
+        padding-bottom: 0.5em;
+    }
+
+    .second h4::after {
+        content: "";
+        background: #66c83d;
+        width: 20%;
+        height: 2px;
+        position: absolute;
+        bottom: 0;
+        left: 40%;
+    }
+
+    .second li {
+        list-style: none;
+        padding-bottom: 30px;
+    }
+
+    .second a,
+    .second2 a {
+        color: rgb(206, 206, 206);
+        text-decoration: none;
+        letter-spacing: 3px;
+        font-weight: bold;
+        font-size: 14px;
+        transition: 0.2s;
+    }
+
+    .second a:hover,
+    .second2 a:hover {
+        color: #fff;
+        transition: 0.2s;
+        text-shadow: 1px 1px 20px rgb(50, 129, 175);
+        text-decoration: none;
+    }
+
+    .third {
+        margin-top: 40px;
+        margin-bottom: 50px;
+        color: rgb(206, 206, 206);
+        font-family: "Poppins", sans-serif;
+        text-align: right;
+    }
+
+    .margin {
+        margin-left: 20px;
+    }
+
+    @media screen and (max-width: 1000px) {
+        .first {
+            text-align: center;
+        }
+
+        .first h4::after {
+            left: 40%;
+        }
+    }
+
+    @media screen and (max-width: 1000px) {
+        .third {
+            text-align: center;
+        }
+
+        .third h4::after {
+            left: 40% !important;
+        }
+    }
+</style>
