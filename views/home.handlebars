@@ -1,0 +1,77 @@
+<div id="ok">
+  {{> navbar }}
+</div>
+
+<section id="hero" class="content hero">
+  <img src="/public/img/905.jpg" alt="">
+  <div class="hero-container aos-init aos-animate text-white font-weight-normal not-opacity content" id="not-opacity"
+    data-aos="zoom-in" data-aos-delay="100">
+    <h1>OURFI Ornella</h1>
+    <h2>Bienvenue sur mon Portfolio</h2>
+    <a href="/profil" class="btn-get-started">Qui suis-je ?</a>
+  </div>
+</section>
+
+
+{{> footer_ok }}
+
+<style>
+  .content {
+
+    min-height: 100vh;
+
+    /* To make the user able to see the content  */
+  }
+
+
+
+  .hero .hero-container {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+
+  }
+
+  [data-aos^=zoom][data-aos^=zoom].aos-animate {
+    opacity: 1;
+    transform: translateZ(0) scale(1);
+  }
+
+ 
+  img {
+  
+        width: 100%;
+   
+    object-fit: cover;
+    object-position: 50% 50%;
+   
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    opacity: 75%;
+
+  }
+
+  .hero .btn-get-started {
+
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 8px 28px;
+    border-radius: 50px;
+    transition: 0.5s;
+    margin: 10px;
+    border: 2px solid  rgb(50, 129, 175);
+    color: #fff;
+  }
+</style>

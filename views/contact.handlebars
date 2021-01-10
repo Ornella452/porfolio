@@ -1,0 +1,89 @@
+{{> navbar}}
+
+{{!-- form de contact user --}}
+<div class="container form-group content">
+
+  <form method="POST" enctype="multipart/form-data" action="sendmail" class="container text-center text-white">
+    <label class="mb-5 mt-3">
+      <h2 class="font-weight-normal">Contact</h2>
+    </label>
+    <input name="name" type="text" class="feedback-input" placeholder="Name" required="required" />
+    <input name="email" type="text" class="feedback-input" placeholder="Email" required="required" />
+    <textarea name="text" class="feedback-input" placeholder="Message" required="required"></textarea>
+    <input type="submit" action="sendmail" />
+  </form>
+</div>
+
+{{>footer_ok}}
+
+
+<style>
+  body {
+    background-image: url("/public/img/5a2c61199c0fa1.0890734315128578816392.png");
+    background-repeat: no-repeat;
+    background-position: top;
+
+  }
+
+  /* Content Style */
+  .content {
+    margin-top: 100px;
+    min-height: 100vh;
+    max-width: 50em;
+    /* To make the user able to see the content  */
+  }
+
+  .content h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+
+
+  .feedback-input {
+    color: white;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    border-radius: 5px;
+    line-height: 22px;
+    background: rgb(30, 30, 40);
+    border: 2px solid #7dabdb;
+    transition: all 0.3s;
+    padding: 13px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: 0;
+  }
+
+  .feedback-input:focus {
+    border: 2px solid #7dabdb;
+  }
+
+  textarea {
+    height: 150px;
+    line-height: 150%;
+    resize: vertical;
+  }
+
+  [type="submit"] {
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    width: 100%;
+    background: hsl(0, 0%, 15%);
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: all 0.3s;
+    margin-top: -4px;
+    font-weight: 700;
+  }
+
+  [type="submit"]:hover {
+    background: #7dabdb;
+  }
+</style>
