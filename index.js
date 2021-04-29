@@ -5,10 +5,10 @@ const nodemailer = require('nodemailer');
 require('dotenv').config()
 const multer = require('multer')
 const cors = require('cors');
-const e = require("cors");
 const Stat = require('./models/statistique')
+const Joi = require('joi');
 
-var storage = multer.diskStorage({//
+const storage = multer.diskStorage({//
     destination: function (req, file, cb) {
         cb(null, 'public/uploads')
     },
@@ -72,7 +72,6 @@ app.get("/contact", (req, res) => {
 
 })
 
-
 /// cette route qui va me recolter lheure et la date de lordi
 // app.get('/cv',async (req, res) => {
 
@@ -94,54 +93,54 @@ app.get("/contact", (req, res) => {
 
 // route qui fait fonctionner le formulaire pour l'utilisateur me contact
 app.post("/sendmail", upload.array(), async (req, res) => {
-    try {
-
+    const { body } = req;
+    const schema = Joi.object({
+    name: Joi.string().alphanum().min(3).max(30).required(),
+    email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
+    text: Joi.string().required(),
+    });
+    const options = {
+        abortEarly: false,
+        allowUnknown: true,
+        stripUnknown: true,
+      };
+      const { error } = schema.validate(body, options);
+    
+    if (error) {
+        res.render('contact', {
+            error: 'Veuillez remplir tout les champs comme il faut svp',
+        })
+        
+    } else {
         const { name, email, text } = req.body
-        console.log('email:', email)
-
-        var mailOptions = {
-            host: 'smtp.gmail.com',
-            port: 587,
-            secure: false, // use SSL
-            auth: {
-                user: 'ornella.contact465@gmail.com',
-                pass: process.env.MOT_PASS
-            },
-            tls: {
-                rejectUnauthorized: false
-            }
+    var mailOptions = {
+        host: 'smtp.gmail.com',
+        port: process.env.PORT_MAIL,
+        secure: false, // use SSL
+        auth: {
+            user: process.env.EMAIL,
+            pass: process.env.MOT_PASS
+        },
+        tls: {
+            rejectUnauthorized: false
         }
-
-        mailer = nodemailer.createTransport(mailOptions);
-
-        mailer.sendMail({
-            from: "Fred Foo 👻",
-            replyTo: email,
-            to: "ornella.contact465@gmail.com",
-            subject: `Prise de contact de ${name}`,
-            text: text,
-
-        });
-
-
-        res.render("merci", {
-            name
-        });
-
-
     }
-    catch (error) {
+    mailer = nodemailer.createTransport(mailOptions);
+    mailer.sendMail({
+        from: "Fred Foo 👻",
+        replyTo: email,
+        to: "ornella.contact465@gmail.com",
+        subject: `Prise de contact de ${name}`,
+        text: text,
 
-        console.log(error)
+    });
+    res.render("merci", {
+        name
+    })
     }
-
-
 })
 
 app.listen(port, () => {
     console.log(`Server started on port: ${port}`);
 });
-
-
-
 
